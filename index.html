@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="description" content="Portal do Bicho — consulta informativa de resultados e estatísticas.">
+  <title>Portal do Bicho | Resultados e estatísticas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Portal do Bicho início">
+      <span class="brand-mark">PB</span>
+      <span><strong>Portal do Bicho</strong><small>RESULTADOS & ESTATÍSTICAS</small></span>
+    </a>
+    <span class="live-label"><i></i> PAINEL INFORMATIVO</span>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <div>
+        <p class="eyebrow">CONSULTA DE RESULTADOS</p>
+        <h1>Resultados <span>do dia</span></h1>
+        <p class="intro-copy">Consulte os números por região e horário em um só lugar.</p>
+      </div>
+      <div class="date-chip"><span>HOJE</span><strong id="today-label">--/--/----</strong></div>
+    </section>
+
+    <section class="filters panel">
+      <div class="section-head">
+        <div><span class="step">01</span><h2>Escolha a região</h2></div>
+        <span class="muted">Selecione uma opção</span>
+      </div>
+      <div class="region-list" id="region-list" role="group" aria-label="Região">
+        <button class="region active" data-region="rio">Rio de Janeiro <small>PT-Rio</small></button>
+        <button class="region" data-region="sao-paulo">São Paulo <small>PT-SP</small></button>
+        <button class="region" data-region="bahia">Bahia <small>Paratodos</small></button>
+        <button class="region" data-region="goias">Goiás <small>Look Goiás</small></button>
+        <button class="region" data-region="nacional">Nacional <small>Nacional</small></button>
+        <button class="region" data-region="federal">Federal <small>Federal</small></button>
+      </div>
+      <div class="filter-bottom">
+        <label class="date-field">Data da consulta<input id="result-date" type="date"></label>
+        <div class="time-wrap"><span class="field-label">Horário</span><div class="time-list" id="time-list"></div></div>
+      </div>
+    </section>
+
+    <nav class="tabs" aria-label="Seções principais">
+      <button class="tab active" data-tab="results"><span>▦</span> Resultados</button>
+      <button class="tab" data-tab="cercar"><span>⌕</span> Cercar Milhar</button>
+      <button class="tab" data-tab="animals"><span>♧</span> Tabela dos Bichos</button>
+    </nav>
+
+    <section id="results-view" class="view">
+      <div class="content-heading"><div><p class="eyebrow">APURAÇÃO SELECIONADA</p><h2 id="result-heading">Rio de Janeiro <span>·</span> PTM</h2></div><span class="demo-tag">DADOS DE DEMONSTRAÇÃO</span></div>
+      <div class="notice"><span>ⓘ</span><p>Os números exibidos nesta versão são <strong>fictícios</strong>, usados apenas para demonstrar o funcionamento do portal. Não são resultados oficiais.</p></div>
+      <div class="results-grid" id="results-grid"></div>
+      <p class="updated-note" id="updated-note">Exibição demonstrativa · Nenhum dado oficial conectado</p>
+    </section>
+
+    <section id="cercar-view" class="view hidden">
+      <div class="content-heading"><div><p class="eyebrow">FERRAMENTA DE CONSULTA</p><h2>Cercar <span>milhar</span></h2></div></div>
+      <div class="panel tool-panel">
+        <p class="muted">Digite uma milhar de quatro algarismos para consultar combinações demonstrativas.</p>
+        <label class="number-field">Sua milhar<input id="milhar-input" inputmode="numeric" maxlength="4" placeholder="Ex.: 1234" autocomplete="off"></label>
+        <button class="primary-btn" id="cercar-btn">Consultar combinações <span>→</span></button>
+        <div id="cercar-output" class="cercar-output" aria-live="polite"><span class="empty-icon">⌕</span><p>As combinações aparecerão aqui.</p></div>
+      </div>
+    </section>
+
+    <section id="animals-view" class="view hidden">
+      <div class="content-heading"><div><p class="eyebrow">REFERÊNCIA</p><h2>Tabela dos <span>25 bichos</span></h2></div></div>
+      <div class="panel animals-panel">
+        <label class="search-field"><span>⌕</span><input id="animal-search" type="search" placeholder="Buscar bicho, grupo ou dezena..."></label>
+        <div class="animals-grid" id="animals-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="footer-brand"><span class="brand-mark">PB</span><strong>Portal do Bicho</strong></div><p>Site estritamente informativo e estatístico. Não realizamos apostas nem temos vínculo com operadores.</p><small>© <span id="year"></span> Portal do Bicho</small></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
